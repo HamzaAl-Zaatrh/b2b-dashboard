@@ -41,6 +41,12 @@ export abstract class BaseComponent implements OnDestroy {
    */
   isLoading = false;
 
+  paginationInfo = {
+    page: 0,
+    pageSize: 5,
+    total: 0,
+  };
+
   /**
    * Angular lifecycle hook for cleaning up subscriptions.
    * Emits and completes the destroy$ Subject.

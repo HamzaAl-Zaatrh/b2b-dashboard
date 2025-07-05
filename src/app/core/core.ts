@@ -10,7 +10,9 @@ import { provideZoneChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import {provideTranslateService} from '@ngx-translate/core';
+import { provideTranslateService } from '@ngx-translate/core';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomPaginatorIntl } from '@core/paginator/custom-paginator-Intl';
 
 export interface CoreOptions {
   routes: Routes;
@@ -43,6 +45,9 @@ export function provideCore({ routes }: CoreOptions) {
         scrollPositionRestoration: 'enabled',
       }),
     ),
+
+    // Provide the custom paginator for all components using MatPaginator
+    { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl },
 
     // Provide the default options for the dialog
     {

@@ -39,10 +39,6 @@ a {
   grid-column: 1 / -1;
 }
 
-.checkbox-row {
-  margin-block: 2px;
-}
-
 .sm-hidden {
   @media (max-width: 640px) {
     display: none !important;
@@ -50,7 +46,7 @@ a {
 }
 
 .tabs-container {
-  mat-icon {
+  .tab-icon {
     color: var(--mat-sys-primary);
     margin-inline-end: 8px;
   }
@@ -150,6 +146,13 @@ input[type='username'],
 input[type='email'] {
   text-align: right;
   direction: ltr;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(424px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 // End global rules ------------------------------

@@ -1,0 +1,92 @@
+.product-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 16px;
+  gap: 16px;
+  border-radius: 8px;
+  background-color: var(--mat-sys-surface-container);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--mat-sys-surface-variant);
+  font-size: 1.125rem;
+
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+
+    .product-card-header {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .product-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 8px;
+
+      .price {
+        font-weight: bold;
+        font-size: 1.25rem;
+        text-wrap: nowrap;
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+
+        button {
+          display: flex;
+          border: none;
+          background-color: var(--mat-sys-primary);
+          color: var(--mat-sys-on-primary);
+          padding: 8px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+
+        }
+      }
+    }
+  }
+
+  .left {
+    position: relative;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--mat-sys-surface-variant);
+    border-radius: 4px;
+    width: 200px;
+    height: 220px;
+    padding: 4px;
+    overflow: hidden;
+
+    img {
+      height: 150px;
+    }
+
+    .availability {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: bold;
+      color: white;
+
+      &.in-stock {
+        background-color: #4caf50; // Green for in stock
+      }
+
+      &.out-of-stock {
+        background-color: #ba1a1a; // Red for out of stock
+      }
+    }
+  }
+}

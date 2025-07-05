@@ -37,6 +37,8 @@
     "settings": "Settings",
     "search": "Search",
     "recentOrdersTable": "Recent Orders Table",
-    "productsList": "Products List"
+    "productsList": "Products List",
+    "dinar": "JD",
+    "addToCart": "Add to Cart"
   }
 }
