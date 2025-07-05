@@ -1,0 +1,64 @@
+.overlay-loader {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-loader-global {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(88, 88, 88, 0.274);
+  z-index: 9999;
+  // add blur effect to the background
+  backdrop-filter: blur(2px);
+}
+
+.container {
+  --uib-size: 35px;
+  --uib-color: var(--mat-sys-primary);
+  --uib-speed: 1s;
+  --uib-stroke: 3.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: var(--uib-size);
+  height: calc(var(--uib-size) * 0.9);
+}
+
+.bar {
+  width: var(--uib-stroke);
+  height: 100%;
+  background-color: var(--uib-color);
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 4px 1px var(--mat-sys-primary-container);
+}
+
+.bar:nth-child(1) {
+  animation: grow var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.45) infinite;
+}
+
+.bar:nth-child(2) {
+  animation: grow var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.3) infinite;
+}
+
+.bar:nth-child(3) {
+  animation: grow var(--uib-speed) ease-in-out calc(var(--uib-speed) * -0.15) infinite;
+}
+
+.bar:nth-child(4) {
+  animation: grow var(--uib-speed) ease-in-out infinite;
+}
+
+@keyframes grow {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}
