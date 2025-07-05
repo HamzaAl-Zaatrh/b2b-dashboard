@@ -49,6 +49,13 @@ a {
   }
 }
 
+.tabs-container {
+  mat-icon {
+    color: var(--mat-sys-primary);
+    margin-inline-end: 8px;
+  }
+}
+
 svg.icon {
   width: 24px;
   height: 24px;
@@ -146,3 +153,16 @@ input[type='email'] {
 }
 
 // End global rules ------------------------------
+
+// global animations -----------------------------
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -11,7 +11,10 @@ html {
       tertiary: theme-colors.$tertiary-palette,
       theme-type: color-scheme,
     ),
-    typography: Roboto,
+    typography: (
+      'Somar',
+      sans-serif,
+    ),
     density: 0,
   ));
 }
@@ -29,3 +32,37 @@ body {
     color-scheme: light;
   }
 }
+
+:root {
+  @include mat.button-overrides(
+      (
+        filled-container-shape: 0.25rem,
+        outlined-container-shape: 0.25rem,
+      )
+  );
+
+  @include mat.paginator-overrides(
+      (
+        container-background-color: transparent,
+      )
+  );
+
+  @include mat.dialog-overrides(
+      (
+        container-shape: 8px,
+      )
+  );
+
+  @include mat.tabs-overrides(
+      (
+        label-text-size: 1rem,
+      )
+  );
+
+  @include mat.select-overrides(
+      (
+        disabled-trigger-text-color: color-mix(in srgb, var(--mat-sys-on-surface) 90%, transparent),
+      )
+  );
+}
+

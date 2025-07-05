@@ -1,0 +1,58 @@
+.card-list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: var(--mat-sys-surface-container);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--mat-sys-surface-variant);
+    font-size: 1.125rem;
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+
+      .card-title {
+        font-weight: 500;
+      }
+
+      .card-icon {
+        font-size: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--mat-sys-primary);
+      }
+    }
+
+    .card-body {
+      flex-grow: 1;
+      .main {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.card-list {
+  .card {
+    opacity: 0; // Ensure cards are hidden initially
+    animation: fadeUp 0.5s ease-out forwards;
+  }
+
+  @for $i from 1 through 4 {
+    .card:nth-child(#{$i}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
+}

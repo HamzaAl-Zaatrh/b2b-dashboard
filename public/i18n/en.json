@@ -35,6 +35,8 @@
     "orders": "Orders",
     "logout": "Logout",
     "settings": "Settings",
-    "search": "Search"
+    "search": "Search",
+    "recentOrdersTable": "Recent Orders Table",
+    "productsList": "Products List"
   }
 }

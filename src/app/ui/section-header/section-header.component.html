@@ -1,0 +1,21 @@
+<header class="section-header">
+  <div class="title">
+    @if (titleIcon(); as titleIcon) {
+      <mat-icon class="material-symbols-rounded" [fontIcon]="titleIcon"></mat-icon>
+    }
+    @if (isSubHeader()) {
+      <h3>{{ title() | translate }}</h3>
+    } @else {
+      <h2>{{ title() | translate }}</h2>
+    }
+  </div>
+
+  @if (actionName(); as actionName) {
+    <button mat-flat-button (click)="onActionClick()">
+      @if (actionIcon(); as actionIcon) {
+        <mat-icon class="material-symbols-rounded" [fontIcon]="actionIcon"></mat-icon>
+      }
+      {{ actionName | translate }}
+    </button>
+  }
+</header>
