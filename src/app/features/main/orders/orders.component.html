@@ -9,7 +9,10 @@
   <app-grid
     [enableSelection]="true"
     [dataSource]="orders"
+    [totalCount]="totalCount"
     [actions]="orderAction"
     [columnsConfig]="orderColumnsConfig"
+    (paginationChanged)="onPaginationChange($event)"
+    [searchEnabled]="false"
   ></app-grid>
 </section>

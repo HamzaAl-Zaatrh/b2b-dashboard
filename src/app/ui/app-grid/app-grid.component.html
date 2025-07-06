@@ -208,9 +208,9 @@
     </table>
   </div>
 
-  @if (paginationInfo.total > 5) {
+  @if (totalCount() > 5) {
     <mat-paginator
-      [length]="paginationInfo.total"
+      [length]="totalCount()"
       [pageSize]="paginationInfo.pageSize"
       [pageIndex]="paginationInfo.page"
       [pageSizeOptions]="pageSizeOptions()"

@@ -19,7 +19,6 @@ import { AppLoaderComponent } from '@core/loader/app-loader/app-loader.component
 export type PaginationInfo = {
   page: number;
   pageSize: number;
-  total: number;
 };
 
 export type ColumnType = 'string' | 'number' | 'date' | 'flag' | 'boolean' | 'image' | 'obj';
@@ -83,6 +82,7 @@ export interface ActionConfig<T = any> {
 export class AppGridComponent<T> implements OnInit, OnDestroy {
   // Inputs
   dataSource = input.required<T[]>();
+  totalCount = input<number>(0);
   isLoading = input(false);
   columnsConfig = input.required<ColumnConfig<T>[]>();
   actions = input<ActionConfig<T>[]>([]);
@@ -125,8 +125,7 @@ export class AppGridComponent<T> implements OnInit, OnDestroy {
   // Pagination info
   paginationInfo: PaginationInfo = {
     page: 0,
-    pageSize: 10,
-    total: 0,
+    pageSize: 5,
   };
 
   ngOnInit() {
@@ -149,7 +148,6 @@ export class AppGridComponent<T> implements OnInit, OnDestroy {
     this.paginationInfo = {
       page: event.pageIndex,
       pageSize: event.pageSize,
-      total: this.paginationInfo.total,
     };
     this.paginationChanged.emit(this.paginationInfo);
   }

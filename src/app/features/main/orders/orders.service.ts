@@ -108,13 +108,11 @@ export class OrdersService {
     totalAmount: parseFloat((Math.random() * 1000).toFixed(2)),
   }));
 
-  // getOrders(): Order[] {
-  //
-  // }
-  //
-  // onPaginateOrders(page: number, pageSize: number): Order[] {
-  //
-  // }
+  getOrders(page: number = 0, size: number = 5): Order[] {
+    const start = page * size;
+    const end = start + size;
+    return this.MOCK_ORDERS.slice(start, end);
+  }
 
   onViewOrder(order: Order): void {
     console.log('Viewing order:', order);
