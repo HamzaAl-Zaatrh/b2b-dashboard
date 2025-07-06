@@ -65,5 +65,9 @@ body {
         disabled-trigger-text-color: color-mix(in srgb, var(--mat-sys-on-surface) 90%, transparent),
       )
   );
+
+  @include mat.expansion-overrides((
+    container-background-color: var(--mat-sys-surface-container),
+  ));
 }
 

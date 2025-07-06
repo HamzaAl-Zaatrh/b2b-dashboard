@@ -6,10 +6,17 @@
 ></section-header>
 
 <section>
+  <app-filter-bar
+    [filterConfigs]="filterConfigs"
+    (search)="onFilterSearch($event)"
+  ></app-filter-bar>
+
   <app-grid
     [enableSelection]="true"
     [dataSource]="orders"
     [totalCount]="totalCount"
+    [pageSize]="paginationInfo.pageSize"
+    [pageIndex]="paginationInfo.page"
     [actions]="orderAction"
     [columnsConfig]="orderColumnsConfig"
     (paginationChanged)="onPaginationChange($event)"

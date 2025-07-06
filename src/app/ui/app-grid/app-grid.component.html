@@ -211,8 +211,8 @@
   @if (totalCount() > 5) {
     <mat-paginator
       [length]="totalCount()"
-      [pageSize]="paginationInfo.pageSize"
-      [pageIndex]="paginationInfo.page"
+      [pageSize]="pageSize()"
+      [pageIndex]="pageIndex()"
       [pageSizeOptions]="pageSizeOptions()"
       [showFirstLastButtons]="true"
       (page)="onPaginationChange($event)"

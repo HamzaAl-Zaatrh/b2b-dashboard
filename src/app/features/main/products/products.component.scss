@@ -1,0 +1,31 @@
+.product-container {
+  display: flex;
+  gap: 16px;
+
+  .filter-bar {
+    width: 300px;
+  }
+
+  .grid-container {
+    flex: 1;
+  }
+
+  .no-data {
+    text-align: center;
+    padding: 20px;
+  }
+
+
+  // For small screens, stack the filter bar above the grid
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .filter-bar {
+      width: 100%;
+    }
+
+    .grid-container {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.filter-bar-wrapper {
+  margin-bottom: 20px;
+}
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.filters-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-item {
+  flex: 1 1 300px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.date-range {
+  display: flex;
+  gap: 16px;
+
+  mat-form-field {
+    flex: 1;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.slider-container {
+  display: flex;
+  padding: 12px 0;
+
+  .slider-values {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .slider-range {
+    width: 100%;
+  }
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.filter-panel {
+  margin-bottom: 8px;
+
+  ::ng-deep .mat-expansion-panel-body {
+    padding: 16px;
+  }
+}

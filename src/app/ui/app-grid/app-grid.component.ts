@@ -87,6 +87,8 @@ export class AppGridComponent<T> implements OnInit, OnDestroy {
   columnsConfig = input.required<ColumnConfig<T>[]>();
   actions = input<ActionConfig<T>[]>([]);
   pageSizeOptions = input([5, 10, 25, 100]);
+  pageSize = input<number>(5);
+  pageIndex = input<number>(0);
   searchEnabled = input<boolean>(true);
   headerActions = input<HeaderActionConfig<T>[]>([]);
   searchDebounceTime = input<number>(300);
@@ -124,8 +126,8 @@ export class AppGridComponent<T> implements OnInit, OnDestroy {
 
   // Pagination info
   paginationInfo: PaginationInfo = {
-    page: 0,
-    pageSize: 5,
+    page: this.pageIndex(),
+    pageSize: this.pageSize(),
   };
 
   ngOnInit() {

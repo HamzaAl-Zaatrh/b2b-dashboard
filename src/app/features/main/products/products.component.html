@@ -5,30 +5,38 @@
   actionIcon="add"
 ></section-header>
 
-<section>
-  <div class="cards-grid">
-    @for (product of products; track product.id) {
-      <app-product-card [product]="product"></app-product-card>
-    } @empty {
-      @if (isLoading) {
-        <div class="loader-container">
-          <app-loader [isGlobal]="false"></app-loader>
-        </div>
-      } @else {
-        <div class="no-data full-row">
-          <p>{{ 'main.noData' | translate }}</p>
-        </div>
+<div class="product-container">
+  <section class="filter-bar">
+    <app-filter-bar
+      [filterConfigs]="filterConfigs"
+      (search)="onFilterSearch($event)"
+    ></app-filter-bar>
+  </section>
+  <section class="grid-container">
+    <div class="cards-grid">
+      @for (product of products; track product.id) {
+        <app-product-card [product]="product"></app-product-card>
+      } @empty {
+        @if (isLoading) {
+          <div class="loader-container">
+            <app-loader [isGlobal]="false"></app-loader>
+          </div>
+        } @else {
+          <div class="no-data full-row">
+            <p>{{ 'main.noData' | translate }}</p>
+          </div>
+        }
       }
-    }
-  </div>
+    </div>
 
-  <mat-paginator
-    [length]="allProducts.length"
-    [pageSize]="paginationInfo.pageSize"
-    [pageIndex]="paginationInfo.page"
-    [pageSizeOptions]="[5, 10, 20]"
-    [showFirstLastButtons]="true"
-    (page)="onPaginationChange($event)"
-  >
-  </mat-paginator>
-</section>
+    <mat-paginator
+      [length]="filteredProducts.length"
+      [pageSize]="paginationInfo.pageSize"
+      [pageIndex]="paginationInfo.page"
+      [pageSizeOptions]="[5, 10, 20]"
+      [showFirstLastButtons]="true"
+      (page)="onPaginationChange($event)"
+    >
+    </mat-paginator>
+  </section>
+</div>
