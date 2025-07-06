@@ -2,6 +2,176 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
 
+## Live Demo
+
+You can see the live application running at:
+[https://b2b-dashboard-sooty.vercel.app/](https://b2b-dashboard-sooty.vercel.app/)
+
+The project has been deployed to Vercel for demonstration purposes.
+
+## Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Dashboard</b></td>
+      <td align="center"><b>Orders Management</b></td>
+    </tr>
+    <tr>
+      <td><img src="/public/img/screenshots/dashboard.png" width="380"/></td>
+      <td><img src="/public/img/screenshots/orders.png" width="380"/></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Product Catalog</b></td>
+      <td align="center"><b>Customer Management</b></td>
+    </tr>
+    <tr>
+      <td><img src="/public/img/screenshots/products.png" width="380"/></td>
+      <td><img src="/public/img/screenshots/customers.png" width="380"/></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Dark Mode</b></td>
+      <td align="center"><b>Mobile Responsive</b></td>
+    </tr>
+    <tr>
+      <td><img src="/public/img/screenshots/dark-mode.png" width="380"/></td>
+      <td><img src="/public/img/screenshots/mobile-responsive.png" width="380"/></td>
+    </tr>
+  </table>
+</div>
+
+## Project Structure
+
+The project follows a modular architecture with clear separation of concerns:
+
+```
+b2b-dashboard/
+├── src/
+│   ├── app/
+│   │   ├── core/              # Core functionality used across the app
+│   │   │   ├── base/          # Base classes and abstractions
+│   │   │   ├── guards/        # Route guards for authentication
+│   │   │   ├── interceptors/  # HTTP interceptors
+│   │   │   ├── loader/        # Loading indicators
+│   │   │   ├── paginator/     # Custom pagination
+│   │   │   └── services/      # Shared services
+│   │   │
+│   │   ├── features/          # Feature modules
+���   │   │   ├── auth/          # Authentication feature
+│   │   │   └── main/          # Main application features
+│   │   │       ├── customers/ # Customer management
+│   │   │       ├── home/      # Dashboard home
+│   │   │       ├── orders/    # Order management
+│   │   │       └── products/  # Product management
+│   │   │
+│   │   ├── layouts/           # Page layouts and containers
+│   │   │
+│   │   └── ui/                # Reusable UI components
+│   │       ├── app-grid/      # Data grid component
+│   │       ├── filter-bar/    # Filtering component
+│   │       └── section-header/ # Page header component
+│   │
+│   ├── environments/          # Environment configuration
+│   └── styles/                # Global styles and themes
+│
+├── public/                    # Static assets
+│   ├── i18n/                  # Translation files
+│   ├── fonts/                 # Custom fonts
+│   ├── img/                   # Image assets
+│   └── svg/                   # SVG assets
+│
+└── angular.json              # Angular CLI configuration
+```
+
+## Key Features
+
+### 1. Scalable Project Architecture
+
+The project follows a modular architecture with clear separation of concerns, making it highly scalable and maintainable:
+- Feature-based organization for domain-specific code
+- Core module for application-wide services and utilities
+- Reusable UI components isolated from business logic
+- Shared services for cross-cutting concerns
+
+### 2. Environment Management
+
+Multiple environment configurations are provided to support different deployment scenarios:
+- Development environment for local development
+- Production environment for deployment
+- Environment-specific API endpoints and configuration settings
+
+### 3. TypeScript Path Aliases
+
+Custom TypeScript path configuration has been implemented for cleaner imports:
+- No more complex relative paths (../../)
+- Logical module-based imports (e.g., `@core/services/auth.service`)
+- Enhanced code readability and maintenance
+
+### 4. Code Quality Tools
+
+Prettier integration ensures consistent code formatting across the project:
+- Automated code formatting
+- Enforced code style guidelines
+- Improved collaboration with standardized formatting
+
+### 5. Theming Support
+
+The application includes a comprehensive theming system:
+- Light and dark mode support
+- Material Design color palettes
+- Theme switching with persistent user preference
+- Customizable color variables
+
+### 6. Internationalization
+
+Full multi-language support implemented with ngx-translate:
+- Language switching without page reload
+- Translation files organized by language
+- Support for right-to-left (RTL) languages
+- Dynamic content translation
+
+### 7. Responsive Design
+
+The application is fully responsive and works on all device sizes:
+- Mobile-first design approach
+- Responsive grid layouts
+- Adaptive navigation components
+- Device-specific optimizations
+
+### 8. Performance Optimization
+
+Performance is optimized through multiple techniques:
+- Lazy-loaded feature modules
+- Code splitting for faster initial load
+- Efficient state management
+
+### 9. Reusable Component Library
+
+A comprehensive set of reusable components designed for maximum flexibility:
+- Filter Bar for advanced data filtering
+- Data Grid for tabular data display
+- Section Headers for consistent page layout
+
+### 10. Dynamic Page Title Management
+
+The application implements a custom Title Service that dynamically updates the browser tab title:
+- Centralized title management for consistency across the application
+
+## API Integration
+
+For the products and customers features, the application integrates with the Platzi Fake Store API:
+- API Endpoint: https://fakeapi.platzi.com/en
+
+Note: While the API provides real data for the application, all filtering functionality is implemented client-side for demonstration purposes. In a production environment, these filters would typically be implemented as API parameters for better performance with large datasets.
+
+## Requirements
+
+To run this project, you need:
+
+- **Node.js**: version 18.x or higher
+- **npm**: version 9.x or higher
+- **Angular CLI**: version 19.x
+
 ## Development server
 
 To start a local development server, run:
@@ -10,53 +180,14 @@ To start a local development server, run:
 ng serve
 ```
 
+or
+
+```bash
+npm start
+```
+
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 ## Reusable Components
 
