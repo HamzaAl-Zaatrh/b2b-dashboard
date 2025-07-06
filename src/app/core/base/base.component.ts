@@ -44,7 +44,6 @@ export abstract class BaseComponent implements OnDestroy {
   paginationInfo = {
     page: 0,
     pageSize: 5,
-    total: 0,
   };
 
   /**
