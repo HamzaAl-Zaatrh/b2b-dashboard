@@ -1,0 +1,18 @@
+// Define the font faces with different weights
+@font-face {
+  font-family: "Somar";
+  src: url("/fonts/SomarSans-Light.ttf") format("truetype");
+  font-weight: 400; // Regular
+}
+
+@font-face {
+  font-family: "Somar";
+  src: url("/fonts/SomarSans-Medium.ttf") format("truetype");
+  font-weight: 500; // Medium
+}
+
+@font-face {
+  font-family: "Somar";
+  src: url("/fonts/SomarSans-Bold.ttf") format("truetype");
+  font-weight: 600; // Bold
+}

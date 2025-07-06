@@ -1,0 +1,89 @@
+<div class="filter-bar-wrapper">
+  <mat-expansion-panel [expanded]="expanded" class="filter-panel">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="filter-header">
+          <h3>Filters</h3>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form [formGroup]="filterForm" (ngSubmit)="onSearch()">
+      <div class="filters-container">
+        @for (config of filterConfigs(); track config.key) {
+          <div class="filter-item">
+            <label>{{ config.label }}</label>
+
+            @switch (config.type) {
+              @case ('text') {
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    [formControlName]="config.key"
+                    [placeholder]="'Enter ' + config.label"
+                  />
+                </mat-form-field>
+              }
+              @case ('dropdown') {
+                <mat-form-field appearance="outline">
+                  <mat-select
+                    [formControlName]="config.key"
+                    [placeholder]="'Select ' + config.label"
+                  >
+                    @for (option of config.options; track option.id) {
+                      <mat-option [value]="option.id">{{ option.name }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              }
+              @case ('date-range') {
+                <div class="date-range">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Start Date</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="startPicker"
+                      [formControlName]="config.key + '_start'"
+                    />
+                    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startPicker></mat-datepicker>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>End Date</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="endPicker"
+                      [formControlName]="config.key + '_end'"
+                    />
+                    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endPicker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              }
+              @case ('range-slider') {
+                <div class="slider-container">
+                  <mat-slider
+                    [min]="config.min ?? 0"
+                    [max]="config.max ?? 100"
+                    step="1"
+                    discrete
+                    [displayWith]="formatLabel"
+                    class="slider-range"
+                  >
+                    <input matSliderStartThumb [formControlName]="config.key + '_min'" />
+                    <input matSliderEndThumb [formControlName]="config.key + '_max'" />
+                  </mat-slider>
+                </div>
+              }
+            }
+          </div>
+        }
+      </div>
+
+      <div class="filter-actions">
+        <button mat-stroked-button type="button" (click)="onReset()">Reset</button>
+        <button mat-flat-button color="primary" type="submit">Search</button>
+      </div>
+    </form>
+  </mat-expansion-panel>
+</div>

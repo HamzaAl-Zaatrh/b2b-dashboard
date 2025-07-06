@@ -1,0 +1,60 @@
+<section class="card-list">
+  @for (card of statistics; track card.id) {
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">{{ card.title }}</div>
+        <mat-icon class="card-icon material-symbols-rounded">{{ card.icon }}</mat-icon>
+      </div>
+      <div class="card-body">
+        <span class="main">{{ card.value }}</span>
+      </div>
+    </div>
+  }
+</section>
+
+<section class="tabs-container">
+  <mat-tab-group mat-stretch-tabs="false">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon card-icon material-symbols-rounded">inventory_2</mat-icon>
+        {{ 'main.productsList' | translate }}
+      </ng-template>
+      <ng-template matTabContent>
+        <div class="tab--padding-top">
+          <div class="cards-grid">
+            @for (product of products; track product.id) {
+              <app-product-card [product]="product"></app-product-card>
+            }
+          </div>
+
+          <mat-paginator
+            [length]="MOCK_PRODUCTS.length"
+            [pageSize]="paginationInfo.pageSize"
+            [pageIndex]="paginationInfo.page"
+            [pageSizeOptions]="[5, 10, 20]"
+            [showFirstLastButtons]="true"
+            (page)="onPaginationChange($event)"
+          >
+          </mat-paginator>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon card-icon material-symbols-rounded">shopping_cart</mat-icon>
+        {{ 'main.recentOrdersTable' | translate }}
+      </ng-template>
+
+      <ng-template matTabContent>
+        <div class="tab--padding-top">
+          <app-grid
+            [dataSource]="orders"
+            [actions]="orderAction"
+            [columnsConfig]="orderColumnsConfig"
+            [searchEnabled]="false"
+          ></app-grid>
+        </div>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</section>

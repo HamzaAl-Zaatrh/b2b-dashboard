@@ -1,0 +1,25 @@
+<div class="product-card">
+  <div class="left">
+    <img [src]="product().image" alt="{{ product().name }}" class="product-image" />
+    <span class="availability" [class]="product().available ? 'in-stock' : 'out-of-stock'">
+      {{ product().available ? 'In Stock' : 'Out Of Stock' }}
+    </span>
+  </div>
+  <div class="right">
+    <div class="product-card-header">
+      <div class="product-card-title">{{ product().name }}</div>
+    </div>
+
+    <div class="product-card-footer">
+      <p class="price">{{ product().price | number }} {{ 'main.dinar' | translate }}</p>
+      <div class="actions">
+        <button matRipple>
+          <mat-icon class="card-icon material-symbols-rounded">add_shopping_cart</mat-icon>
+        </button>
+        <button matRipple>
+          <mat-icon class="card-icon material-symbols-rounded">edit</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
