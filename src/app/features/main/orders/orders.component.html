@@ -1,1 +1,15 @@
-<p>orders works!</p>
+<section-header
+  title="main.orders"
+  titleIcon="shopping_basket"
+  actionName="main.addOrder"
+  actionIcon="add"
+></section-header>
+
+<section>
+  <app-grid
+    [enableSelection]="true"
+    [dataSource]="orders"
+    [actions]="orderAction"
+    [columnsConfig]="orderColumnsConfig"
+  ></app-grid>
+</section>

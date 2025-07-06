@@ -41,6 +41,7 @@
     "dinar": "JD",
     "addToCart": "Add to Cart",
     "addProduct": "Add Product",
-    "noData": "No data available"
+    "noData": "No data available",
+    "addOrder": "Add Order"
   }
 }

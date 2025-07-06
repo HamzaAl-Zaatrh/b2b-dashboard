@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use './styles/_theme-colors.scss' as theme-colors;
+@use './styles/variables.scss';
 @use './styles/global-rules.scss';
 
 html {
