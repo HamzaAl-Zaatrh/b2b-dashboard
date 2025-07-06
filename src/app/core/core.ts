@@ -8,11 +8,12 @@ import {
 } from '@angular/router';
 import { provideZoneChangeDetection } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { provideTranslateService } from '@ngx-translate/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginatorIntl } from '@core/paginator/custom-paginator-Intl';
+import { authInterceptor, errorHandleInterceptor, loaderInterceptor } from '@core/interceptors';
 
 export interface CoreOptions {
   routes: Routes;
@@ -26,7 +27,7 @@ export function provideCore({ routes }: CoreOptions) {
 
     provideHttpClient(
       withFetch(),
-      // We can Inject interceptors here
+      withInterceptors([authInterceptor, errorHandleInterceptor, loaderInterceptor]),
     ),
 
     provideTranslateService({

@@ -80,6 +80,7 @@ svg.icon {
   min-height: 300px;
   display: flex;
   justify-content: center;
+  grid-column: 1 / -1;
 }
 
 .margin-top {

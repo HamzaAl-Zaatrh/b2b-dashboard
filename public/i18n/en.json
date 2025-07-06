@@ -39,6 +39,8 @@
     "recentOrdersTable": "Recent Orders Table",
     "productsList": "Products List",
     "dinar": "JD",
-    "addToCart": "Add to Cart"
+    "addToCart": "Add to Cart",
+    "addProduct": "Add Product",
+    "noData": "No data available"
   }
 }

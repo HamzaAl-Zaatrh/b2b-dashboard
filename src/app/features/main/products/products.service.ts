@@ -1,103 +1,157 @@
-import { Injectable } from '@angular/core';
-import { Product } from '@app/features/main/products/products.type';
+import { inject, Injectable } from '@angular/core';
+import { Product, ProductResponse } from '@app/features/main/products/products.type';
+import { RequestService } from '@app/core';
+import { catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
+  private requestService = inject(RequestService);
   MOCK_PRODUCTS: Product[] = [
     {
       id: 1,
-      name: 'Sony WH-1000XM3 Bluetooth Wireless Over Ear Headphones',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692947383286-714WUJlhbLS._SL1500_.jpg',
-      price: 773,
+      name: 'Majestic Mountain Graphic T-Shirt',
+      price: 44,
+      image: 'https://i.imgur.com/QkIa5tT.jpeg',
       available: true,
     },
     {
       id: 2,
-      name: 'Microsoft Xbox X/S Wireless Controller Robot White',
-      image: 'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692255251854-xbox.jpg',
-      price: 57,
+      name: 'Classic Red Pullover Hoodie',
+      price: 10,
+      image: 'https://i.imgur.com/1twoaDy.jpeg',
       available: false,
     },
     {
       id: 3,
-      name: 'Logitech G733 Lightspeed Wireless Gaming Headset - White',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692257709689-logitech heaphone.jpg',
-      price: 384,
+      name: 'Classic Heather Gray Hoodie',
+      price: 69,
+      image: 'https://i.imgur.com/cHddUCu.jpeg',
       available: true,
     },
     {
       id: 4,
-      name: 'Sony WH-1000XM5 Wireless Industry Leading Headphones',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1692941008275-headphone3.jpg',
-      price: 362,
-      available: false,
+      name: 'Classic Grey Hooded Sweatshirt',
+      price: 90,
+      image: 'https://i.imgur.com/R2PN9Wq.jpeg',
+      available: true,
     },
     {
       id: 5,
-      name: 'Urbanista Los Angeles Solar Powered ANC Headphones',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691056487173-headphon2.jpg',
-      price: 265,
-      available: true,
-    },
-    {
-      id: 6,
-      name: 'Xiaomi Wired in-Ear Earphones with Mic (Blue)',
-      image: 'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691057474498-earphone.jpg',
-      price: 5,
+      name: 'Classic Black Hooded Sweatshirt',
+      price: 79,
+      image: 'https://i.imgur.com/cSytoSD.jpeg',
       available: false,
     },
     {
-      id: 7,
-      name: 'boAt Rockerz 370 On Ear Bluetooth Headphones',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691057718636-headphone5.jpg',
-      price: 12,
+      id: 6,
+      name: 'Classic Comfort Fit Joggers',
+      price: 25,
+      image: 'https://i.imgur.com/ZKGofuB.jpeg',
       available: true,
     },
     {
+      id: 7,
+      name: 'Classic Comfort Drawstring Joggers',
+      price: 79,
+      image: 'https://i.imgur.com/mp3rUty.jpeg',
+      available: true,
+    },
+    {
+      id: 8,
+      name: 'Classic Red Jogger Sweatpants',
+      price: 98,
+      image: 'https://i.imgur.com/9LFjwpI.jpeg',
+      available: false,
+    },
+    {
       id: 9,
-      name: 'Amkette EvoFox Elite Ops Wireless Gamepad',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1694100438525-51Prg4Smx-L._SL1500_.jpg',
-      price: 18,
+      name: 'Classic Navy Blue Baseball Cap',
+      price: 61,
+      image: 'https://i.imgur.com/R3iobJA.jpeg',
       available: true,
     },
     {
       id: 10,
-      name: 'Samsung Galaxy S22 5G (Phantom White)',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691074519203-galaxy S22 5G.jpg',
-      price: 760,
+      name: 'Classic Blue Baseball Cap',
+      price: 86,
+      image: 'https://i.imgur.com/wXuQ7bm.jpeg',
       available: false,
     },
     {
       id: 11,
-      name: 'Samsung Galaxy S22 Ultra 5G (Burgundy)',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691074776147-galaxy S22 ultra 5G.jpg',
-      price: 1147,
+      name: 'Classic Red Baseball Cap',
+      price: 35,
+      image: 'https://i.imgur.com/cBuLvBi.jpeg',
       available: true,
     },
     {
       id: 12,
-      name: 'Poco by Xiaomi F1 (Steel Blue)',
-      image: 'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691078463674-poco f1.jpg',
-      price: 132,
+      name: 'Classic Black Baseball Cap',
+      price: 58,
+      image: 'https://i.imgur.com/KeqG6r4.jpeg',
       available: true,
     },
     {
       id: 13,
-      name: 'Samsung Galaxy M14 5G (Smoky Teal)',
-      image:
-        'https://storage.googleapis.com/fir-auth-1c3bc.appspot.com/1691075307831-galaxy M14 5G.jpg',
-      price: 187,
+      name: 'Classic Olive Chino Shorts',
+      price: 84,
+      image: 'https://i.imgur.com/UsFIvYs.jpeg',
+      available: false,
+    },
+    {
+      id: 14,
+      name: 'Classic High-Waisted Athletic Shorts',
+      price: 43,
+      image: 'https://i.imgur.com/eGOUveI.jpeg',
+      available: true,
+    },
+    {
+      id: 15,
+      name: 'Classic White Crew Neck T-Shirt',
+      price: 39,
+      image: 'https://i.imgur.com/axsyGpD.jpeg',
+      available: false,
+    },
+    {
+      id: 16,
+      name: 'Classic White Tee - Timeless Style and Comfort',
+      price: 73,
+      image: 'https://i.imgur.com/Y54Bt8J.jpeg',
+      available: true,
+    },
+    {
+      id: 17,
+      name: 'Classic Black T-Shirt',
+      price: 35,
+      image: 'https://i.imgur.com/9DqEOV5.jpeg',
       available: false,
     },
   ];
+
+  /**
+   * Fetches a list of products from the API.
+   * @return An observable that emits an array of products.
+   * This method retrieves product data from the API and maps it to a simplified format.
+   */
+  getProducts() {
+    return this.requestService.get<ProductResponse[]>('products').pipe(
+      map((res) => {
+        const data: Product[] = res.map((product: any) => ({
+          id: product.id,
+          name: product.title,
+          price: product.price,
+          image: product.images?.[0] || '',
+          available: Math.random() < 0.5, // Randomly set availability
+        }));
+        return data;
+      }),
+      catchError((err) => {
+        // We can show toast message here if needed
+        console.error('Error fetching products:', err);
+        return of([]); // Return an empty array on error
+      }),
+    );
+  }
 }

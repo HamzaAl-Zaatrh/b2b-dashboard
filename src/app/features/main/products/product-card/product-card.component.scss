@@ -62,12 +62,11 @@
     border: 1px solid var(--mat-sys-surface-variant);
     border-radius: 4px;
     width: 200px;
-    height: 220px;
-    padding: 4px;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
 
     img {
-      height: 150px;
+      width: 100%;
     }
 
     .availability {
@@ -79,6 +78,7 @@
       font-size: 0.875rem;
       font-weight: bold;
       color: white;
+      box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 
       &.in-stock {
         background-color: #4caf50; // Green for in stock
